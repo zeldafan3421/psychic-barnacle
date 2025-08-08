@@ -172,10 +172,10 @@ if (downloadRaylib) then
         includedirs { "../src" }
         includedirs { "../include" }
 
-        links {"raylib"}
+        links {"raylib", "stdc++exp"}
 
         cdialect "C17"
-        cppdialect "C++17"
+        cppdialect "C++23"
 
         includedirs {raylib_dir .. "/src" }
         includedirs {raylib_dir .."/src/external" }

@@ -1,5 +1,5 @@
 #include "raylib.h"
-#include "resource_dir.h"
+#include "log.h"
 
 constexpr int width = 1280;
 constexpr int height = 720;
@@ -8,6 +8,8 @@ constexpr Color background_color = WHITE;
 
 int main()
 {
+	SetTraceLogCallback(CustomLog);
+
 	InitWindow(width, height, title);
 
 	while (!WindowShouldClose())

@@ -7,5 +7,10 @@
 		"**/.DS_Store": true,
 		"**/*.o": true,
 		"**/*.exe": true,
+	},
+	"files.associations": {
+		"print": "cpp",
+		"stdexcept": "cpp",
+		"exception": "cpp"
 	}
 }

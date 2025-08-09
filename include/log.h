@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+#include <fstream>
 #include <print>
 #include <format>
 #include <vector>
@@ -9,8 +11,17 @@
 #include <memory>
 #include "raylib.h"
 
+enum class LogMode
+{
+    Stdout,
+    File,
+    Dual
+};
+
+namespace 
+{
 /**
- * @brief Wrap va_copy for raii
+ * @brief Wrap va_copy for RAII
  * 
  */
 struct va_list_guard {
@@ -24,7 +35,7 @@ struct va_list_guard {
     ~va_list_guard() { va_end(ap); }
 };
 
-static const char* GetMessagePreamble(int msgType)
+const char* GetMessagePreamble(int msgType)
 {
     switch (msgType)
     {
@@ -37,6 +48,31 @@ static const char* GetMessagePreamble(int msgType)
     }
 }
 
+    template<LogMode mode> 
+    void internal_log(const std::string& message)
+    {
+        std::println("{}", message);
+    }
+
+    template<>
+    void internal_log<LogMode::File>(const std::string& message)
+    {
+        static std::string logBuffer;
+
+        logBuffer.append(message + "\n");
+
+        std::ofstream logFile("logs.txt");
+        logFile << logBuffer << std::endl;
+    }
+
+    template<>
+    void internal_log<LogMode::Dual>(const std::string& message)
+    {
+        internal_log<LogMode::Stdout>(message);
+        internal_log<LogMode::File>(message);
+    }
+};
+
 /**
  * @brief CustomLog Design to be used as TraceLogCallback
  * 
@@ -46,6 +82,7 @@ static const char* GetMessagePreamble(int msgType)
  * 
  * @exception runtime_error If failure occures runtime_error is thrown
  */
+template <LogMode mode>
 void CustomLog(int msgType, const char* text, va_list args)
 {
     va_list_guard args_copy(args);
@@ -64,5 +101,5 @@ void CustomLog(int msgType, const char* text, va_list args)
     if (msgType == LOG_FATAL)
         throw std::runtime_error(std::string(preamble) + " " + message_buffer.data());
 
-    std::println("{} {}", preamble, message_buffer.data());
+    internal_log<mode>(std::format("{} {}", preamble, message_buffer.data()));
 }

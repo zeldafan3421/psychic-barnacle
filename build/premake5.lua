@@ -171,6 +171,7 @@ if (downloadRaylib) then
         
         includedirs { "../src" }
         includedirs { "../include" }
+        includedirs { "../include/**" }
 
         links {"raylib", "stdc++exp"}
 

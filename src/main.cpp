@@ -1,23 +1,15 @@
 #include "raylib.h"
 #include "log.h"
 
-constexpr int width = 1280;
-constexpr int height = 720;
-const char* title = "app";
-constexpr Color background_color = WHITE;
+#include <cstring>
+#include <memory>
+
+#include "application.h"
 
 int main()
 {
-	SetTraceLogCallback(CustomLog);
+	SetTraceLogCallback(CustomLog<LogMode::Dual>);
 
-	InitWindow(width, height, title);
-
-	while (!WindowShouldClose())
-	{
-		BeginDrawing();
-		ClearBackground(background_color);
-		EndDrawing();
-	}
-
-	CloseWindow();
+	Application app;
+	app.loop();
 }

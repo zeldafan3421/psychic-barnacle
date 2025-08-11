@@ -19,7 +19,7 @@ void MainScreen::draw() const
     ClearBackground(m_BgColor);
 }
 
-Color MainScreen::nextColor(Color last)
+[[nodiscard("Helper Method")]] Color MainScreen::nextColor(Color last)
 {
     unsigned char redChannel = last.r + GetRandomValue(0, 255);
     unsigned char greenChannel = redChannel + GetRandomValue(0, 255);

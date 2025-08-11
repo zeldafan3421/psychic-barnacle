@@ -9,7 +9,7 @@ class Application
 public:
     Application();
 
-    void loop();
+    [[noreturn]]void loop();
 
 private:
     void render(const IScreen& screen) const;

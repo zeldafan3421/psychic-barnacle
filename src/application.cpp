@@ -17,7 +17,7 @@ void Application::loop()
     }
 }
 
-void Application::render(const IScreen &screen)
+void Application::render(const IScreen &screen) const
 {
     BeginDrawing();
         ClearBackground(BLACK);

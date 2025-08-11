@@ -12,7 +12,7 @@ public:
     void loop();
 
 private:
-    void render(const IScreen& screen);
+    void render(const IScreen& screen) const;
 
 private:
     MainScreen m_MainScreen;

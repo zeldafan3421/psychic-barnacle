@@ -60,6 +60,11 @@
 		"ios": "cpp",
 		"iostream": "cpp",
 		"istream": "cpp",
-		"ostream": "cpp"
+		"ostream": "cpp",
+		"queue": "cpp",
+		"algorithm": "cpp",
+		"deque": "cpp",
+		"optional": "cpp",
+		"array": "cpp"
 	}
 }

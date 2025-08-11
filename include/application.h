@@ -1,6 +1,8 @@
 #pragma once
 
-#include "renderer.h"
+#include "screen.h"
+#include "main_screen.h"
+#include <raylib.h>
 
 class Application
 {
@@ -8,6 +10,13 @@ public:
     Application();
 
     void loop();
+
 private:
-    Renderer renderer;
+    void render(const IScreen& screen);
+
+private:
+    MainScreen m_MainScreen;
+    constexpr static int g_StartWidth = 1280;
+    constexpr static int g_StartHeight = 720;
+    const char* g_AppTitle = "My Application";
 };

@@ -37,8 +37,4 @@
 [INFO] : TEXTURE: [ID 2] Texture loaded successfully (128x128 | GRAY_ALPHA | 1 mipmaps)
 [INFO] : FONT: Default font loaded successfully (224 glyphs)
 [INFO] : SYSTEM: Working Directory: C:\Users\Rated\psychic-barnacle
-[INFO] : TEXTURE: [ID 2] Unloaded texture data from VRAM (GPU)
-[INFO] : SHADER: [ID 3] Default shader unloaded successfully
-[INFO] : TEXTURE: [ID 1] Default texture unloaded successfully
-[INFO] : Window closed successfully
 

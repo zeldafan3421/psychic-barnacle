@@ -8,7 +8,7 @@
 
 int main()
 {
-	SetTraceLogCallback(CustomLog<LogMode::Dual>);
+	SetTraceLogCallback(CustomLog<LogMode::Stdout>);
 
 	Application app;
 	app.loop();

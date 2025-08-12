@@ -1,7 +1,9 @@
 #pragma once
 #include <raylib.h>
 #include "screen.h"
-
+#include "input.h"
+#include "utility.h"
+#include "player.h"
 class MainScreen : public IScreen
 {
 public:
@@ -10,10 +12,7 @@ public:
     virtual void update() override;
     virtual void draw() const override;
 private:
-    static Color nextColor(Color last);
-    double getTimePassed();
-
-    constexpr static double g_PauseLength = 0.4;
-    double m_LastUpdate;
+    Player m_Player;
     Color m_BgColor;
 };
+

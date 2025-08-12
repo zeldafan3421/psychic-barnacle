@@ -1,34 +1,18 @@
 #include "main_screen.h"
+#include "raymath.h"
 
-MainScreen::MainScreen()
+MainScreen::MainScreen() : m_BgColor(WHITE)
 {
-    m_BgColor = BLACK;
 }
 
 void MainScreen::update()
 {
-    if (getTimePassed() > g_PauseLength)
-    {
-        m_BgColor = nextColor(m_BgColor);
-        m_LastUpdate = GetTime();
-    }
+    m_Player.update();
 }
 
 void MainScreen::draw() const
 {
     ClearBackground(m_BgColor);
-}
-
-[[nodiscard("Helper Method")]] Color MainScreen::nextColor(Color last)
-{
-    unsigned char redChannel = last.r + GetRandomValue(0, 255);
-    unsigned char greenChannel = redChannel + GetRandomValue(0, 255);
-    unsigned char blueChannel = greenChannel + GetRandomValue(0, 255);
-
-    return Color{redChannel, greenChannel, blueChannel, last.a};
-}
-
-double MainScreen::getTimePassed()
-{
-    return GetTime() - m_LastUpdate;
+    m_Player.draw();
+    DrawFPS(10, 10);
 }

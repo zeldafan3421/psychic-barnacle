@@ -23,6 +23,8 @@ struct Velocity
 struct EntityData
 {
     EntityData() : position{0.0f, 0.0f}, velocity{0.0f, 0.0f} {}
+    EntityData(Vector2 _p) : position{_p}, velocity{0.0f, 0.0f} {}
+
     Vector2 position;
     Velocity velocity;
 
@@ -66,6 +68,10 @@ class Entity
 {
 public:
     Entity() : m_Data(), m_CalculatePosition(100.0f)
+    {
+    }
+
+    Entity(Vector2 _p) : m_Data(_p),  m_CalculatePosition(100.0f) 
     {
     }
 

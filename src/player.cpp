@@ -16,7 +16,7 @@ void Player::update()
 
 void Player::draw() const
 {
-    DrawRectangleV(m_Base.getPosition(), m_Graphics.rectangleSize, m_Graphics.color);
+    m_Graphics.draw(m_Base.getPosition());
 }
 
 Player::operator Entity()

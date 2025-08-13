@@ -4,6 +4,8 @@
 #include "input.h"
 #include "utility.h"
 #include "player.h"
+#include "dummy.h"
+
 class MainScreen : public IScreen
 {
 public:
@@ -13,6 +15,7 @@ public:
     virtual void draw() const override;
 private:
     Player m_Player;
+    DummyEntity m_Dummy;
     Color m_BgColor;
 };
 

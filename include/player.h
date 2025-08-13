@@ -12,6 +12,11 @@ struct PlayerGraphics
 
     Vector2 rectangleSize;
     Color color;
+
+    void draw(Vector2 position) const 
+    {
+        DrawRectangleV(position, rectangleSize, color);
+    }
 };
 
 class Player 
